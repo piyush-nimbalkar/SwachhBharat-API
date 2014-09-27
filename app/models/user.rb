@@ -4,4 +4,6 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   before_save { self.email = email.downcase }
+  has_secure_password
+  validates :password, length: { minimum: 6 }
 end
