@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   has_secure_password
   validates :password, length: { minimum: 6 }
+
+  has_many :spotfixes, foreign_key: :owner_id
 end

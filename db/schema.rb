@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927044311) do
+ActiveRecord::Schema.define(version: 20140927174118) do
+
+  create_table "spotfixes", force: true do |t|
+    t.integer  "owner_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "estimated_hours"
+    t.integer  "estimated_people"
+    t.string   "status"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "fix_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spotfixes", ["owner_id"], name: "index_spotfixes_on_owner_id"
 
   create_table "users", force: true do |t|
     t.string   "first_name"
