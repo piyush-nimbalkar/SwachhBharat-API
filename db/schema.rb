@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927175330) do
+ActiveRecord::Schema.define(version: 20140927232729) do
 
   create_table "replies", force: true do |t|
     t.integer  "user_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20140927175330) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "replies", ["user_id", "spotfix_id"], name: "index_replies_on_user_id_and_spotfix_id", unique: true
 
   create_table "spotfixes", force: true do |t|
     t.integer  "owner_id"
