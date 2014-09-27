@@ -9,6 +9,6 @@ class Spotfix < ActiveRecord::Base
   has_many :replies
 
   validates_presence_of :title, :status, :latitude, :longitude, :fix_date
-  validates_inclusion_of :status, in: [Status::PENDING, Status::FIXED]
+  validates_inclusion_of :status, in: [Status::PENDING, Status::FIXED], message: 'is invalid'
 
 end
