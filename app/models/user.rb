@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
 
   has_many :spotfixes, foreign_key: :owner_id
+  has_many :replies
 end
