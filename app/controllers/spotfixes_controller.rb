@@ -1,5 +1,10 @@
 class SpotfixesController < ApplicationController
 
+  def index
+    @spotfixes = Spotfix.all
+    render :index
+  end
+
   def create
     @spotfix = Spotfix.new(request.request_parameters)
     if params[:owner_id] and not User.find_by_id(params[:owner_id])

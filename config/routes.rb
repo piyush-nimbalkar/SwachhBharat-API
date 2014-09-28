@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create]
   post 'login' => 'users#login'
 
-  resources :spotfixes, only: [:create, :update]
+  resources :spotfixes, only: [:index, :create, :update]
   resources :replies, only: [:create]
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
