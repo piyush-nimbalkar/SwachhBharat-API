@@ -8,7 +8,7 @@ class Spotfix < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   has_many :replies
 
-  validates_presence_of :title, :status, :latitude, :longitude, :fix_date
+  validates_presence_of :title, :status, :latitude, :longitude, :fix_date, :owner_id
   validates_inclusion_of :status, in: [Status::PENDING, Status::FIXED], message: 'is invalid'
 
 end
