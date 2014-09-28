@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140927232729) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "replies", force: true do |t|
     t.integer  "user_id"
     t.integer  "spotfix_id"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140927232729) do
     t.datetime "updated_at"
   end
 
-  add_index "replies", ["user_id", "spotfix_id"], name: "index_replies_on_user_id_and_spotfix_id", unique: true
+  add_index "replies", ["user_id", "spotfix_id"], name: "index_replies_on_user_id_and_spotfix_id", unique: true, using: :btree
 
   create_table "spotfixes", force: true do |t|
     t.integer  "owner_id"
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140927232729) do
     t.datetime "updated_at"
   end
 
-  add_index "spotfixes", ["owner_id"], name: "index_spotfixes_on_owner_id"
+  add_index "spotfixes", ["owner_id"], name: "index_spotfixes_on_owner_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -47,6 +50,6 @@ ActiveRecord::Schema.define(version: 20140927232729) do
     t.string   "password_digest"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
