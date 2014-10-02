@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
   def login
-    user = User.find_by_email(params[:email])
-    render text: 'Successful authentication' and return if user && user.authenticate(params[:password])
+    @user = User.find_by_email(params[:email])
+    render :show and return if @user && @user.authenticate(params[:password])
     render text: 'Invalid email or password', status: :unauthorized
   end
 
